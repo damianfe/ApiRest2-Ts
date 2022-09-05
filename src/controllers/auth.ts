@@ -1,46 +1,21 @@
 import { Request, Response } from "express";
-import { handleHttp } from "../utils/error.handle";
-const getItem = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-       handleHttp(res, 'ERROR_GET_ITEM')
-    }
-}
+import { registerNewUser, loginUser } from "../services/auth.service";
 
-const getItems = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-       handleHttp(res, 'ERROR_GET_ITEMS')
-    }
+const registerCtrl = async ({ body }: Request, res: Response) => {
+  const responseUser = await registerNewUser(body);
+  res.send(responseUser);
+};
 
-}
+const loginCtrl = async ({ body }: Request, res: Response) => {
+  const { email, password } = body;
+  const responseUser = await loginUser({ email, password });
 
-const updatetItem = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-        handleHttp(res, "ERROR_UPDATE_ITEM")
-    }
+  if (responseUser === "PASSWORD_INCORRECT") {
+    res.status(403);
+    res.send(responseUser);
+  } else {
+    res.send(responseUser);
+  }
+};
 
-}
-
-const postItem = ({body}: Request,res:Response) =>{
-    try {
-        res.send(body)
-    } catch (e) {
-        handleHttp(res, "ERROR_POST_ITEM");
-    }
-
-}
-const deleteItem = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-        handleHttp(res, "ERROR_DELETE_ITEM");
-    }
-
-}
-
-export{getItem,getItems,updatetItem,postItem,deleteItem};
+export { loginCtrl, registerCtrl };
