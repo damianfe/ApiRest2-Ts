@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon ./src/app.ts"
+    "dev": "nodemon ./src/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,14 +13,15 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "mongoose": "^6.5.4",
     "moongose": "^1.0.0",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.19"
   },
   "devDependencies": {
-    "@types/multer": "^1.4.7",
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.13"
+    "@types/express": "^4.17.13",
+    "@types/multer": "^1.4.7"
   }
 }
