@@ -17,7 +17,9 @@ const getCar = async (id: string) => {
 };
 
 const updateCar = async (id: string, data: Car) => {
-  const responseItem = await ItemModel.findOneAndUpdate({ _id: id }, data, {
+  const responseItem = await ItemModel.findOneAndUpdate(
+    { _id: id },
+    data, {
     new: true,
   });
   return responseItem;

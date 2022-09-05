@@ -1,5 +1,5 @@
 import {Router, Response, Request} from "express";
-import { deleteItem, getItem, getItems, postItem, updatetItem } from "../controllers/item";
+import { deleteItem, getItem, getItems, postItem, updateItem } from "../controllers/item";
 
 
 const router = Router()
@@ -13,7 +13,7 @@ router.get("/:id", getItem);
 
 router.post("/",postItem);
 
-router.put("/:id",updatetItem);
+router.put("/:id",updateItem);
 
 router.delete("/:id", deleteItem);
 
