@@ -26,9 +26,10 @@ const updatetItem = (req: Request,res:Response) =>{
 
 }
 
-const postItem = ({body}: Request,res:Response) =>{
+const postItem = async ({body}: Request,res:Response) =>{
     try {
-        res.send(body)
+        const responseItem = await (body);
+    res.send(responseItem);
     } catch (e) {
         handleHttp(res, "ERROR_POST_ITEM");
     }
