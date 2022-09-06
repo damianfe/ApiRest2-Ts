@@ -1,46 +1,17 @@
 import { Request, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
+import { RequestExt } from "../interfaces/req-ext";
 import { handleHttp } from "../utils/error.handle";
-const getItem = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-       handleHttp(res, 'ERROR_GET_ITEM')
-    }
-}
 
-const getItems = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-       handleHttp(res, 'ERROR_GET_ITEMS')
-    }
+const getItems = (req: RequestExt, res: Response) => {
+  try {
+    res.send({
+      data: "ESTO SOLO LO VE LAS PERSONS CON SESSION / JWT",
+      user: req.user,
+    });
+  } catch (e) {
+    handleHttp(res, "ERROR_GET_BLOGS");
+  }
+};
 
-}
-
-const updatetItem = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-        handleHttp(res, "ERROR_UPDATE_ITEM")
-    }
-
-}
-
-const postItem = ({body}: Request,res:Response) =>{
-    try {
-        res.send(body)
-    } catch (e) {
-        handleHttp(res, "ERROR_POST_ITEM");
-    }
-
-}
-const deleteItem = (req: Request,res:Response) =>{
-    try {
-        
-    } catch (e) {
-        handleHttp(res, "ERROR_DELETE_ITEM");
-    }
-
-}
-
-export{getItem,getItems,updatetItem,postItem,deleteItem};
+export { getItems };
